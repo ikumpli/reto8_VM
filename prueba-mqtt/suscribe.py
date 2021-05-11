@@ -9,7 +9,7 @@ logging.basicConfig(level=logging.DEBUG, format='%(asctime)s > %(name)s > %(leve
 def on_connect(client, userdata, flags, rc):
     logging.debug(f'Connected with result code {rc}')
     logging.debug("Subscribing")
-    client.subscribe("#")  # Warning! (read comment below)
+    client.subscribe("temperatura")  # Warning! (read comment below) #si se pone un hashtag coge todos
     logging.debug("Subscribed")
     """
     Good and bad practices (https://www.hivemq.com/blog/mqtt-essentials-part-5-mqtt-topics-best-practices):
@@ -43,7 +43,7 @@ def on_message(client, userdata, message):
 # Connection
 broker = "localhost"
 client = paho.Client("client-subscribe")
-client.username_pw_set(username="mosquitto", password="mosquitto")
+client.username_pw_set(username="user", password="user")
 client.on_connect = on_connect
 client.on_message = on_message
 logging.debug(f'Connecting to broker {broker}')
